@@ -6,8 +6,8 @@ public class GeneradorIP {
 	
 	private Random random=new Random();
 	
-	public int generarNumero(){
-		return random.nextInt(0,255);
+	public int generarNumero(int min, int max){
+		return random.nextInt(min,max+1);
 	}
 	
 	public String generarIPV4(){
