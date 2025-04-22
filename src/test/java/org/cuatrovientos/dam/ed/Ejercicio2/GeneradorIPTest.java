@@ -24,10 +24,11 @@ class GeneradorIPTest {
 		
 		String resultado=generadorIP.generarIPV4();
 		
+		int seccionesEsperadas=4;
 		String[] secciones=resultado.split("\\.");
 		
-		assertTrue(secciones.length==4,"ERROR, la IPV4 no tiene el número de secciones indicado");
-		assertTrue(Integer.parseInt(secciones[0]) !=0 && Integer.parseInt(secciones[secciones.length-1]) !=0, "ERROR, la IPV4 empieza o termina por 0");
+		assertEquals(seccionesEsperadas, secciones.length,"ERROR, la IPV4 no tiene el número de secciones esperadas");
+		assertTrue(Integer.parseInt(secciones[0]) >0 && Integer.parseInt(secciones[secciones.length-1]) >0, "ERROR, la IPV4 empieza o termina por 0");
 		
 	}
 
