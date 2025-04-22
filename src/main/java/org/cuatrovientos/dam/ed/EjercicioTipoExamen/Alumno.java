@@ -13,6 +13,13 @@ public class Alumno {
 		this.nombre = nombre;
 		this.email = email;
 	}
+	
+	public Alumno(String nombre, String email, Modulo modulo) {
+		super();
+		this.nombre = nombre;
+		this.email = email;
+		modulos.add(modulo);
+	}
 
 	public boolean apruebaCurso() {
 		if (modulos.isEmpty()) {
