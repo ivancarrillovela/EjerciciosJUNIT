@@ -1,15 +1,18 @@
 package org.cuatrovientos.dam.ed.EjercicioTipoExamen;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Modulo {
 	
 	private String nombreModulo;
-	private ArrayList<Entregable> entregables=new ArrayList<Entregable>();
-	private ArrayList<Examen> examenes=new ArrayList<Examen>();
+	private List<Double> entregables;
+	private List<Double> examenes;
 	
-	public Modulo(String nombreModulo) {
+	public Modulo(String nombreModulo, List<Double> entregables, List<Double> examenes) {
+		super();
 		this.nombreModulo = nombreModulo;
+		this.entregables = entregables;
+		this.examenes = examenes;
 	}
 
 	public double notaModulo() {
@@ -18,19 +21,19 @@ public class Modulo {
 		}
 		double maxNotaEx=0;
 		double sumaNotaEx=0;
-		for (Examen e: examenes) {
-			if (e.getNota() > maxNotaEx) {
-				maxNotaEx=e.getNota();
+		for (Double e: examenes) {
+			if (e > maxNotaEx) {
+				maxNotaEx=e;
 			}
-			sumaNotaEx+=e.getNota();
+			sumaNotaEx+=e;
 		}
 		if (maxNotaEx > 4) {
 			return maxNotaEx;
 		}
 		double mediaExamenes=sumaNotaEx/examenes.size();
 		double sumaNotaEn=0;
-		for (Entregable e: entregables) {
-			sumaNotaEn+=e.getNota();
+		for (Double e: entregables) {
+			sumaNotaEn+=e;
 		}
 		double mediaEntregables=sumaNotaEn/entregables.size();
 		return (mediaEntregables*0.60)+(mediaExamenes*0.40);
